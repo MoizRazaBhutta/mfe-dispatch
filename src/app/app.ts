@@ -1,11 +1,19 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, signal, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { mountRootParcel } from 'single-spa';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-mfe-dispatch',
   imports: [CommonModule],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App implements OnInit, AfterViewInit {
   session: any;
@@ -21,7 +29,9 @@ export class App implements OnInit, AfterViewInit {
   async ngAfterViewInit(): Promise<void> {
     try {
       // Dynamic import of MFE 1's exposed DriverBadgeParcel
-      const mfeDriverModule = await import(/* @vite-ignore */ 'http://localhost:4201/main.js');
+      const mfeDriverModule = await import(
+        /* @vite-ignore */ 'https://driver-mfe.vercel.app/main.js'
+      );
       const parcelConfig = mfeDriverModule.DriverBadgeParcel;
 
       if (parcelConfig && this.parcelContainer) {
@@ -30,7 +40,7 @@ export class App implements OnInit, AfterViewInit {
           driverName: 'Alex Mercer (Assigned)',
           status: 'En Route',
           vehicleId: 'TRK-8802',
-          rating: '4.95'
+          rating: '4.95',
         });
       }
     } catch (err) {

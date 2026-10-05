@@ -8,6 +8,6 @@ declare module '@hub/mfe-dispatch' {
   export default value;
 }
 
-declare module 'http://localhost:4201/main.js' {
+declare module 'https://driver-mfe.vercel.app/main.js' {
   export const DriverBadgeParcel: any;
 }
